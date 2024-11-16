@@ -1,0 +1,9 @@
+packmodemenu.options.pack_mode=Pack Mode
+packmodemenu.options.save=Apply
+packmodemenu.options.save_restart=Save and Exit Game
+packmodemenu.options.cancel=Cancel
+packmodemenu.options.current=Current
+packmodemenu.options.warning.restart=After saving you have to restart the game\nfor the changes to take effect.
+
+gui.to_modify=Open config screen
+gui.ignore=Ignore and back to main screen

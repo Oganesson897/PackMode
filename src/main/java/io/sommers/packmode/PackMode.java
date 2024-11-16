@@ -7,14 +7,18 @@ import io.sommers.packmode.compat.CompatHandler;
 import io.sommers.packmode.proxy.CommonProxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
 
 import static io.sommers.packmode.PackMode.*;
 
@@ -38,12 +42,12 @@ public class PackMode {
         logger = event.getModLog();
         PackModeAPI.createInstance(PMConfig.getPackMode(), Lists.newArrayList(PMConfig.getAcceptedModes()));
 
-        CompatHandler.tryActivate();
-        CompatHandler.preInit();
-
         if (PMConfig.getConfiguration().hasChanged()) {
             PMConfig.getConfiguration().save();
         }
+
+        CompatHandler.tryActivate();
+        CompatHandler.preInit();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

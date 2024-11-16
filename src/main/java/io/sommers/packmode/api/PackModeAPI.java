@@ -3,7 +3,6 @@ package io.sommers.packmode.api;
 import com.google.common.collect.ImmutableList;
 import joptsimple.internal.Strings;
 import net.minecraftforge.common.MinecraftForge;
-import scala.actors.threadpool.Arrays;
 
 import java.util.List;
 import java.util.Objects;

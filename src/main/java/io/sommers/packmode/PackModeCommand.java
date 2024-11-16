@@ -1,6 +1,5 @@
 package io.sommers.packmode;
 
-import com.google.common.collect.Lists;
 import io.sommers.packmode.api.PackModeAPI;
 import joptsimple.internal.Strings;
 import net.minecraft.command.CommandBase;
