@@ -23,7 +23,7 @@ import static io.sommers.packmode.PackMode.*;
 @Mod(modid = MOD_ID, name = MOD_NAME, version = VERSION, dependencies = DEPENDS, acceptedMinecraftVersions = MC_VERSIONS)
 public class PackMode {
     public static final String MOD_ID = "packmode";
-    public static final String MOD_NAME = "PackMode";
+    public static final String MOD_NAME = "PackMode Reborn";
     public static final String VERSION = "@VERSION@";
     public static final String DEPENDS = "after:crafttweaker;after:gamestages@[2.0.0,)";
     public static final String MC_VERSIONS = "[1.12.2, 1.13)";
