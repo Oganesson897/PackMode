@@ -8,6 +8,7 @@ import java.io.File;
 
 @Config(modid = PackMode.MOD_ID)
 public class PMConfig {
+
     private static Property packMode;
     private static Property acceptedModes;
     private static Property disableTipScreen;

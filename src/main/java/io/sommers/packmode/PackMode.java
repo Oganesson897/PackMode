@@ -20,6 +20,8 @@ import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 
+import java.io.File;
+
 import static io.sommers.packmode.PackMode.*;
 
 @Mod(modid = MOD_ID, name = MOD_NAME, version = VERSION, dependencies = DEPENDS, acceptedMinecraftVersions = MC_VERSIONS)
@@ -30,6 +32,8 @@ public class PackMode {
     public static final String DEPENDS = "after:crafttweaker;after:gamestages@[2.0.0,)";
     public static final String MC_VERSIONS = "[1.12.2, 1.13)";
 
+    public static File cfg_override;
+
     public static Logger logger;
 
     @SidedProxy(clientSide = "io.sommers.packmode.proxy.ClientProxy",
@@ -38,7 +42,6 @@ public class PackMode {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        PMConfig.init(event.getSuggestedConfigurationFile());
         logger = event.getModLog();
         PackModeAPI.createInstance(PMConfig.getPackMode(), Lists.newArrayList(PMConfig.getAcceptedModes()));
 
