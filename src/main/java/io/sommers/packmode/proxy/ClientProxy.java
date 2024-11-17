@@ -36,7 +36,7 @@ public class ClientProxy extends CommonProxy<EntityPlayerSP> {
         if (event.getGui() instanceof GuiMainMenu && !TipsScreen.wasOpened) {
             TipsScreen.wasOpened = true;
             List<String> warnings = new ArrayList<>();
-            if (Objects.equals(PMConfig.getPackMode(), PMConfig.getAcceptedModes()[0]) && !PMConfig.disabledTipScreen()) {
+            if (Objects.equals(PMConfig.getPackMode(), PMConfig.getAcceptedModes()[0]) && PMConfig.enabledTipScreen()) {
                 warnings.add("The current packmode is default option.");
                 warnings.add("(The first packmode type in acceptedModes array)");
             }

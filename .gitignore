@@ -23,6 +23,7 @@ hs_err_pid*
 
 #Forge
 run/
+run-server/
 build/
 .gradle/
 .idea/

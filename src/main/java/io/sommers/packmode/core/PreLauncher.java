@@ -2,6 +2,7 @@ package io.sommers.packmode.core;
 
 import io.sommers.packmode.PMConfig;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -16,7 +17,6 @@ import java.util.Map;
 public class PreLauncher implements IFMLCallHook {
 
     private File mcLocation;
-    private File cfgOverride;
 
     @Override
     public void injectData(Map<String, Object> data) {
@@ -25,7 +25,7 @@ public class PreLauncher implements IFMLCallHook {
 
     @Override
     public Void call() {
-        if (!PMConfig.disabledTipScreen()) {
+        if (PMConfig.enabledTipScreen()) {
             JFrame frame = new JFrame("PackMode Selector");
             frame.setSize(350, 200);
             frame.addWindowListener(new WindowAdapter() {
@@ -58,7 +58,7 @@ public class PreLauncher implements IFMLCallHook {
 
     private void overrideConfig() {
         File cfgCurrent = new File(mcLocation, "config");
-        cfgOverride = new File(mcLocation, "config/packmode/" + PMConfig.getPackMode().toLowerCase());
+        File cfgOverride = new File(mcLocation, "config/packmode/" + PMConfig.getPackMode().toLowerCase());
         if (cfgOverride.isDirectory()) {
             Path sourceDir = Paths.get(cfgOverride.toURI());
             Path targetDir = Paths.get(cfgCurrent.toURI());
@@ -76,7 +76,7 @@ public class PreLauncher implements IFMLCallHook {
                         .forEach(File::delete);
 
             } catch (IOException e) {
-                e.printStackTrace();
+                LogManager.getLogger("PackMode").error(e);
             }
         }
     }

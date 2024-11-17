@@ -5,6 +5,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
 import java.io.File;
+import java.util.Arrays;
 
 @Config(modid = PackMode.MOD_ID)
 public class PMConfig {
@@ -51,8 +52,16 @@ public class PMConfig {
         return acceptedModes.getStringList();
     }
 
-    public static boolean disabledTipScreen() {
-        return disableTipScreen.getBoolean();
+    public static boolean enabledTipScreen() {
+        return !disableTipScreen.getBoolean();
+    }
+
+    public static int getOrdinal(String mode) {
+        return Arrays.asList(getAcceptedModes()).indexOf(mode);
+    }
+
+    public static String byOrdinal(int ordinal) {
+        return getAcceptedModes()[ordinal];
     }
 
     public static Configuration getConfiguration() {

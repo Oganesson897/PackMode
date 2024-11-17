@@ -17,6 +17,8 @@ java {
     }
 }
 
+tasks.runServer.workingDir("run-server")
+
 minecraft {
     mcVersion.set("1.12.2")
 

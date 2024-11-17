@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import io.sommers.packmode.api.PackModeAPI;
 import io.sommers.packmode.api.PackModeChangedEvent;
 import io.sommers.packmode.compat.CompatHandler;
+import io.sommers.packmode.network.PackModeChangeMessage;
 import io.sommers.packmode.proxy.CommonProxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,9 +15,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
-
-import java.io.File;
 
 import static io.sommers.packmode.PackMode.*;
 
@@ -27,8 +27,6 @@ public class PackMode {
     public static final String VERSION = "@VERSION@";
     public static final String DEPENDS = "after:crafttweaker;after:gamestages@[2.0.0,)";
     public static final String MC_VERSIONS = "[1.12.2, 1.13)";
-
-    public static File cfg_override;
 
     public static Logger logger;
 
@@ -47,6 +45,8 @@ public class PackMode {
 
         CompatHandler.tryActivate();
         CompatHandler.preInit();
+
+        PackModeNetwork.CHANNEL.registerMessage(PackModeChangeMessage.PackModeChangeMessageHandler.class, PackModeChangeMessage.class, 0, Side.CLIENT);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
