@@ -10,7 +10,6 @@ import net.minecraft.util.text.TextComponentString;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Arrays;
 
 public class PackModeCommand extends CommandBase {
     @Override
